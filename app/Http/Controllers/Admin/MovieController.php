@@ -50,22 +50,22 @@ class MovieController extends Controller
             // save new image
             $smallThumbnail = $request->small_thumbnail;
             $originalSmallThumbnailName = Str::random(10).'-'.$smallThumbnail->getClientOriginalName();
-            $smallThumbnail->storeAs('public/thumbnail', $originalSmallThumbnailName);
+            $smallThumbnail->storeAs('public/thumbnail/', $originalSmallThumbnailName);
             $data['small_thumbnail'] = $originalSmallThumbnailName;
 
             // delete old image
-            Storage::delete('public/thumbnail'.$movies->small_thumbnail);
+            Storage::delete('public/thumbnail/'.$movies->small_thumbnail);
         }
 
         if($request->large_thumbnail) {
             // save new image
             $largeThumbnail = $request->large_thumbnail;
             $originallargeThumbnailName = Str::random(10).'-'.$largeThumbnail->getClientOriginalName();
-            $largeThumbnail->storeAs('public/thumbnail', $originallargeThumbnailName);
+            $largeThumbnail->storeAs('public/thumbnail/', $originallargeThumbnailName);
             $data['large_thumbnail'] = $originallargeThumbnailName;
 
             // delete old image
-            Storage::delete('public/thumbnail'.$movies->large_thumbnail);
+            Storage::delete('public/thumbnail/'.$movies->large_thumbnail);
         }
 
         $movies->update($data);
