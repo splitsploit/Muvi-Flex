@@ -15,7 +15,8 @@ class MovieController extends Controller
         // dd($request->all());
         // $data = $request->except('_token');
         // dd($data);
-
+        
+        $data = $request->except('_token');
         $request->validate([
             'title' => 'required|string',
             'trailer' => 'required|url',
@@ -29,5 +30,19 @@ class MovieController extends Controller
             'short_about' => 'required|string',
             'featured' => 'required',
         ]);
+
+        $smallThumbnail = $request->small_thumbnail;
+        $largeThumbnail = $request->large_thumbnail;
+
+        $originalSmallThumbnailName = $smallThumbnail->getClientOriginalName();
+        $originalLargeThumbnailName = $largeThumbnail->getClientOriginalName();
+
+        $smallThumbnail->storeAs('public/thumbnail', $originalSmallThumbnailName);
+        $largeThumbnail->storeAs('public/thumbnail', $originalLargeThumbnailName);
+
+        $data['small_thumbnail'] = $originalSmallThumbnailName;
+        $data['large_thumbnail'] = $originalLargeThumbnailName;
+
+        dd($data);
     }
 }
