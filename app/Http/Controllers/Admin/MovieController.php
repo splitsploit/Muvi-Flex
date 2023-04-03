@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Movie;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class MovieController extends Controller
 {
@@ -16,7 +17,7 @@ class MovieController extends Controller
         // $data = $request->except('_token');
         // dd($data);
         
-        $data = $request->except('_token');
+        $data = $request->except('_token'); // get all request data, except token
         $request->validate([
             'title' => 'required|string',
             'trailer' => 'required|url',
@@ -43,6 +44,8 @@ class MovieController extends Controller
         $data['small_thumbnail'] = $originalSmallThumbnailName;
         $data['large_thumbnail'] = $originalLargeThumbnailName;
 
-        dd($data);
+        Movie::create($data);
+        
+        return redirect()->back();
     }
 }
