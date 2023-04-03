@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Movie;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -35,8 +36,9 @@ class MovieController extends Controller
         $smallThumbnail = $request->small_thumbnail;
         $largeThumbnail = $request->large_thumbnail;
 
-        $originalSmallThumbnailName = $smallThumbnail->getClientOriginalName();
-        $originalLargeThumbnailName = $largeThumbnail->getClientOriginalName();
+        // k8tZjtbdo7-filename.jpg
+        $originalSmallThumbnailName = Str::random(10).'-'.$smallThumbnail->getClientOriginalName();
+        $originalLargeThumbnailName = Str::random(10).'-'.$largeThumbnail->getClientOriginalName();
 
         $smallThumbnail->storeAs('public/thumbnail', $originalSmallThumbnailName);
         $largeThumbnail->storeAs('public/thumbnail', $originalLargeThumbnailName);
