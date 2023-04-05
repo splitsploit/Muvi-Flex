@@ -27,7 +27,7 @@
 
           <div class="row">
             <div class="col-md-12">
-              <table id="example2" class="table table-bordered table-hover">
+              <table id="listMovie" class="table table-bordered table-hover">
                 <thead>
                   <tr>
                     <th>Id</th>
@@ -71,4 +71,10 @@
     </div>
   </div>
 
+@endsection
+
+@section('js')
+  <script>
+    $('#listMovie').DataTable();
+  </script>
 @endsection
