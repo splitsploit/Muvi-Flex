@@ -20,7 +20,8 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-12">
-              <a href="{{ route('movie.create') }}" class="btn btn-success">Create Movie</a>
+              <a href="{{ route('movie.create') }}" class="btn btn-success mb-3">
+                Create Movie</a>
             </div>
           </div>
 
@@ -48,11 +49,15 @@
                             <td>{{ $movie->categories }}</td>
                             <td>{{ $movie->casts }}</td>
                             <td>
-                                <a href="{{ route('movie.edit', $movie->id) }}" class="btn btn-warning">Edit</a>
+                                <a href="{{ route('movie.edit', $movie->id) }}" class="btn btn-warning">
+                                  <i class="far fa-edit"></i>
+                                </a>
                                 <form action="{{ route('movie.delete', $movie->id) }}" method="POST">
                                   @method('DELETE')
                                   @csrf
-                                  <button type="sumbit" class="btn btn-danger">Hapus</button>
+                                  <button type="sumbit" class="btn btn-danger">
+                                    <i class="fas fa-trash-alt"></i>
+                                  </button>
                                 </form>
                             </td>
                         </tr>

@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 // !! Admin Routes
 Route::group(['prefix' => 'admin'], function() {
-    Route::get('/', [DashboardController::class, 'index']);
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
     // !! Movie Routes
     Route::group(['prefix' => 'movie'], function() {
