@@ -43,6 +43,11 @@
                             <td>{{ $movie->casts }}</td>
                             <td>
                                 <a href="{{ route('movie.edit', $movie->id) }}" class="btn btn-warning">Edit</a>
+                                <form action="{{ route('movie.delete', $movie->id) }}" method="POST">
+                                  @method('DELETE')
+                                  @csrf
+                                  <button type="sumbit" class="btn btn-danger">Hapus</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach               
