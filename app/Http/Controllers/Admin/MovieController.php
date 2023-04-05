@@ -70,7 +70,7 @@ class MovieController extends Controller
 
         $movies->update($data);
 
-        return redirect()->back();
+        return redirect()->route('movie.index')->with('success', 'Successfully Edit Movie');
     }
 
     public function store(Request $request) {
@@ -108,7 +108,7 @@ class MovieController extends Controller
 
         Movie::create($data);
         
-        return redirect()->back();
+        return redirect()->route('movie.index')->with('success', 'Successfully Create Movie');
     }
 
     public function destroy($id) {
