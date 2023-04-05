@@ -10,7 +10,13 @@
         <div class="card-header">
           <h3 class="card-title">Movies</h3>
         </div>
-        
+
+        @if (Session::has('success'))
+            <div class="alert-danger mt-3 mb-3 p-3">
+              {{ Session('success') }}
+            </div>
+        @endif
+
         <div class="card-body">
           <div class="row">
             <div class="col-md-12">
