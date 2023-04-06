@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MovieController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ Route::get('/', function () {
 // Route::get('test', function() {
 //     return view('admin.dashboard');
 // });
+
+Route::get('admin/login', [LoginController::class, 'index'])->name('admin.login');
 
 // !! Admin Routes
 Route::group(['prefix' => 'admin'], function() {
