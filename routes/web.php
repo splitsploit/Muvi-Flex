@@ -29,7 +29,7 @@ Route::get('admin/login', [LoginController::class, 'index'])->name('admin.login'
 Route::post('admin/login', [LoginController::class, 'authenticate'])->name('admin.login.auth');
 
 // !! Admin Routes
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin.auth'], function() {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
     // !! Movie Routes
