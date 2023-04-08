@@ -55,7 +55,7 @@
                                 <form action="{{ route('movie.delete', $movie->id) }}" method="POST">
                                   @method('DELETE')
                                   @csrf
-                                  <button type="sumbit" class="btn btn-danger">
+                                  <button type="submit" class="btn btn-danger">
                                     <i class="fas fa-trash-alt"></i>
                                   </button>
                                 </form>
