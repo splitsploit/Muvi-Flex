@@ -32,6 +32,8 @@ Route::post('admin/login', [LoginController::class, 'authenticate'])->name('admi
 Route::group(['prefix' => 'admin', 'middleware' => 'admin.auth'], function() {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
+    Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
+
     // !! Movie Routes
     Route::group(['prefix' => 'movie'], function() {
         Route::get('/', [MovieController::class, 'index'])->name('movie.index');
