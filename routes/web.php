@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MovieController;
+use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,7 +35,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin.auth'], function() {
 
     Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
 
-    // !! Movie Routes
+    // ** Movie Routes
     Route::group(['prefix' => 'movie'], function() {
         Route::get('/', [MovieController::class, 'index'])->name('movie.index');
 
@@ -45,5 +46,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin.auth'], function() {
         Route::put('update/{id}', [MovieController::class, 'update'])->name('movie.update');
 
         Route::delete('delete/{id}', [MovieController::class, 'destroy'])->name('movie.delete');
+    });
+
+    // ** Traansaction Routes
+    Route::group(['prefix' => 'transaction'], function() {
+        Route::get('/', [TransactionController::class, 'index'])->name('transaction.index');
     });
 });
