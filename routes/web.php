@@ -1,16 +1,20 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\MovieController;
-use App\Http\Controllers\Admin\TransactionController;
-use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Admin\MovieController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Member\RegisterController;
+use App\Http\Controllers\Admin\TransactionController;
 
 
 
 Route::view('/', 'index');
 
-// ! test route
+// !! Member Route
+Route::get('register', [RegisterController::class, 'index'])->name('member.register');
+
+// !! test route
 // Route::get('test', function() {
 //     return view('admin.dashboard');
 // });
