@@ -12,7 +12,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-12">
-              <table id="example2" class="table table-bordered table-hover">
+              <table id="listTransaction" class="table table-bordered table-hover">
                 <thead>
                   <tr>
                     <th>Id</th>
@@ -42,4 +42,10 @@
       </div>
     </div>
   </div>
+@endsection
+
+@section('js')
+    <script>
+        $('#listTransaction').DataTable();
+    </script>
 @endsection
