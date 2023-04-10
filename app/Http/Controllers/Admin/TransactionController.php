@@ -15,6 +15,8 @@ class TransactionController extends Controller
             'user',
         ])->get();
 
-        dd($transactions);
+        // dd($transactions);
+
+        return view('admin.transactions.index', compact('transactions'));
     }
 }
