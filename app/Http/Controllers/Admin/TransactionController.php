@@ -12,6 +12,7 @@ class TransactionController extends Controller
 
         $transactions = Transaction::with([
             'package',
+            'user',
         ])->get();
 
         dd($transactions);
