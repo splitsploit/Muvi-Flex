@@ -6,13 +6,13 @@ use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Member\RegisterController;
 use App\Http\Controllers\Admin\TransactionController;
-
-
+use App\Http\Controllers\Member\LoginController as MemberLoginController;
 
 Route::view('/', 'index');
 
 // !! Member Route
 Route::get('register', [RegisterController::class, 'index'])->name('member.register');
+Route::get('login', [MemberLoginController::class, 'index'])->name('member.login');
 
 // !! test route
 // Route::get('test', function() {

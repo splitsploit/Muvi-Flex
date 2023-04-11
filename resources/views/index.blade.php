@@ -69,7 +69,7 @@
                             <img src="{{ asset('muvi-flex/assets/images/stream.svg') }}" alt="muvi-flex" />
                         </a>
                         <div class="flex flex-col w-full font-normal lg:w-auto lg:gap-12 lg:items-center lg:flex-row">
-                            <a href="#"
+                            <a href="{{ route('member.login') }}"
                                 class="px-8 py-3 mt-3 text-center outline outline-2 outline-stream-gray rounded-3xl lg:mt-0">
                                 <span class="text-base text-normal text-stream-gray">Sign In</span>
                             </a>
@@ -90,7 +90,7 @@
                 Everything you need to entertain yourself and <br class="hidden lg:block" />
                 your family from anywhere you are
             </p>
-            <a href="#" class="mt-5 rounded-full bg-indigo-600 text-center py-3 px-11">
+            <a href="{{ route('member.register') }}" class="mt-5 rounded-full bg-indigo-600 text-center py-3 px-11">
                 <span class="text-white font-semibold text-base">Get Started</span>
             </a>
         </section>
