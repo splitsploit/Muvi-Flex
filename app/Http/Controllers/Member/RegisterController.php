@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Member;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -33,5 +34,12 @@ class RegisterController extends Controller
                 'email' => 'This Email is Already Exists'
             ])->withInput();
         }
+
+        $data['password'] = Hash::make($request->password);
+        $data['role'] = 'member';
+
+        User::create($data);
+
+        return redirect()->route('member.login');
     }
 }
