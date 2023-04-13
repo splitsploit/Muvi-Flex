@@ -12,6 +12,8 @@ Route::view('/', 'index');
 
 // !! Member Route
 Route::get('register', [RegisterController::class, 'index'])->name('member.register');
+Route::post('register', [RegisterController::class, 'store'])->name('member.register.post');
+
 Route::get('login', [MemberLoginController::class, 'index'])->name('member.login');
 
 // !! test route
