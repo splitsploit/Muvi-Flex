@@ -15,6 +15,7 @@ Route::get('register', [RegisterController::class, 'index'])->name('member.regis
 Route::post('register', [RegisterController::class, 'store'])->name('member.register.post');
 
 Route::get('login', [MemberLoginController::class, 'index'])->name('member.login');
+Route::post('login', [MemberLoginController::class, 'login'])->name('member.login.post');
 
 // !! test route
 // Route::get('test', function() {

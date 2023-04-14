@@ -50,13 +50,13 @@
 
                     <!-- Form login -->
                     <section class="w-11/12 max-w-[460px]">
-                        <form action="#" method="POST" class="mt-[70px] flex flex-col bg-white p-[30px] rounded-2xl gap-6">
+                        <form action="{{ route('member.login.post') }}" method="POST" class="mt-[70px] flex flex-col bg-white p-[30px] rounded-2xl gap-6">
                             @csrf
                             <div class="form-input flex flex-col gap-3">
                                 <label for="email" class="text-base font-medium text-stream-dark">Email Address</label>
                                 <input type="email"
                                     name="email"
-                                    value=""
+                                    value="{{ old('email') }}"
                                     class="rounded-full py-3 pr-3 pl-6 text-stream-dark placeholder:text-stream-gray placeholder:font-normal font-medium outline outline-stream-gray outline-1 text-base focus:outline-indigo-600 input-stream"
                                     placeholder="Your email address" />
                                 @error('email')
@@ -67,7 +67,7 @@
                                 <label for="password" class="text-base font-medium text-stream-dark">Password</label>
                                 <input type="password"
                                     name="password"
-                                    value=""
+                                    value="{{ old('password') }}"
                                     class="rounded-full py-3 pr-3 pl-6 text-stream-dark placeholder:text-stream-gray placeholder:font-normal font-medium outline-stream-gray outline outline-1 text-base focus:outline-indigo-600 input-stream"
                                     placeholder="Your password" />
                                 @error('password')
