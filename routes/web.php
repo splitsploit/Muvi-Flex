@@ -1,13 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Admin\MovieController;
+use App\Http\Controllers\Member\PricingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Member\RegisterController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Member\LoginController as MemberLoginController;
-use App\Http\Controllers\Member\PricingController;
 
 Route::view('/', 'index');
 
@@ -19,6 +20,16 @@ Route::get('login', [MemberLoginController::class, 'index'])->name('member.login
 Route::post('login', [MemberLoginController::class, 'login'])->name('member.login.post');
 
 Route::get('pricing', [PricingController::class, 'index'])->name('member.pricing');
+
+// Route::group(['prefix' => 'member', 'middleware' => 'auth'], function() {
+
+    Route::get('test', function() {
+        if(! Auth::user()) {
+            return redirect()->route('member.login');
+        }
+        return 'Anda Sudah Login';
+    });
+// });
 
 // !! test route
 // Route::get('test', function() {
