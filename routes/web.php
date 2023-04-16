@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Member\RegisterController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Member\LoginController as MemberLoginController;
+use App\Http\Controllers\Member\PricingController;
 
 Route::view('/', 'index');
 
@@ -16,6 +17,8 @@ Route::post('register', [RegisterController::class, 'store'])->name('member.regi
 
 Route::get('login', [MemberLoginController::class, 'index'])->name('member.login');
 Route::post('login', [MemberLoginController::class, 'login'])->name('member.login.post');
+
+Route::get('pricing', [PricingController::class, 'index'])->name('member.pricing');
 
 // !! test route
 // Route::get('test', function() {
