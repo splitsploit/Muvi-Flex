@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Member\PricingController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Member\DashboardController as MemberDashboardController;
 use App\Http\Controllers\Member\RegisterController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Member\LoginController as MemberLoginController;
@@ -21,15 +22,17 @@ Route::post('login', [MemberLoginController::class, 'login'])->name('member.logi
 
 Route::get('pricing', [PricingController::class, 'index'])->name('member.pricing');
 
-// Route::group(['prefix' => 'member', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'member', 'middleware' => 'auth'], function() {
 
-    Route::get('test', function() {
-        if(! Auth::user()) {
-            return redirect()->route('member.login');
-        }
-        return 'Anda Sudah Login';
-    });
-// });
+    // Route::get('test', function() {
+    //     if(! Auth::user()) {
+    //         return redirect()->route('member.login');
+    //     }
+    //     return 'Anda Sudah Login';
+    // });
+
+    Route::get('/', [MemberDashboardController::class, 'index'])->name('member.dashboard');
+});
 
 // !! test route
 // Route::get('test', function() {
