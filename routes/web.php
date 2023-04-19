@@ -10,6 +10,7 @@ use App\Http\Controllers\Member\DashboardController as MemberDashboardController
 use App\Http\Controllers\Member\RegisterController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Member\LoginController as MemberLoginController;
+use App\Http\Controllers\Member\Moviecontroller as MemberMovieController;
 
 Route::view('/', 'index');
 
@@ -32,6 +33,7 @@ Route::group(['prefix' => 'member', 'middleware' => 'auth'], function() {
     // });
 
     Route::get('/', [MemberDashboardController::class, 'index'])->name('member.dashboard');
+    Route::get('movie/{id}', [MemberMovieController::class, 'show'])->name('member.movie.detail');
 });
 
 // !! test route
