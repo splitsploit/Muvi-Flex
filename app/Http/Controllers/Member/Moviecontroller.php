@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 
 class Moviecontroller extends Controller
 {
-    public function show() {
+    public function show($id) {
         return view('member.movie-detail');
+    }
+
+    public function watch($id) {
+        return view('member.movie-watching');
     }
 }

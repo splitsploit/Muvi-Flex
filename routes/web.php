@@ -33,7 +33,9 @@ Route::group(['prefix' => 'member', 'middleware' => 'auth'], function() {
     // });
 
     Route::get('/', [MemberDashboardController::class, 'index'])->name('member.dashboard');
+
     Route::get('movie/{id}', [MemberMovieController::class, 'show'])->name('member.movie.detail');
+    Route::get('movie/{id}/watch', [MemberMovieController::class, 'watch'])->name('member.movie.watch');
 });
 
 // !! test route
