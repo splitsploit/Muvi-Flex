@@ -32,7 +32,7 @@
 
         <!-- Button back to dashboard -->
         <div class="absolute top-5 left-5 z-20">
-            <a href="#">
+            <a href="{{ route('member.movie.detail', 1) }}">
                 <img src="{{ asset('muvi-flex/assets/images/ic_arrow-left.svg') }}" class="transition-all btn-back w-[46px]" alt="muvi-flex" />
             </a>
         </div>
