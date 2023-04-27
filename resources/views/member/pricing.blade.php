@@ -46,6 +46,10 @@
             <div class="px-5 lg:px-[60px] pt-[30px] relative">
                 <!-- Logo & User Avatar -->
 
+                @if (Auth::user())
+                    @include('member.components.navbar')
+                @endif
+
                 <div class="pt-[85px] flex flex-col items-center gap-5">
 
                     <p class="text-red-300 text-base font-semibold">
@@ -66,8 +70,10 @@
                         <!-- Card -->
                         <div class="pricing-card">
                             <p class="text-stream-dark font-medium text-base">
+                                {{ ucwords($standard->name) }}
                             </p>
                             <div class="text-3xl text-stream-dark font-semibold my-1">
+                                Rp. {{ number_format($standard->price) }}
                             </div>
                             <p class="text-sm text-stream-gray">
                                 /bulan
@@ -79,7 +85,7 @@
                                 <!-- benefits -->
                                 <div class="flex items-center justify-between gap-3">
                                     <span class="li-benefits">
-                                         Users Limits
+                                         {{ $standard->max_users }} Users Limits
                                     </span>
                                     <img src="{{ asset('muvi-flex/assets/images/ic_check.svg') }}" alt="muvi-flex" />
                                 </div>
@@ -129,8 +135,10 @@
                         <!-- Card -->
                         <div class="pricing-card">
                             <p class="text-stream-dark font-medium text-base">
+                                {{ ucwords($gold->name) }}
                             </p>
                             <div class="text-3xl text-stream-dark font-semibold my-1">
+                                Rp. {{ number_format($gold->price) }}
                             </div>
                             <p class="text-sm text-stream-gray">
                                 /bulan
@@ -142,7 +150,7 @@
                                 <!-- benefits -->
                                 <div class="flex items-center justify-between gap-3">
                                     <span class="li-benefits">
-                                     Users Limits
+                                     {{ $gold->max_users }} Users Limits
                                     </span>
                                     <img src="{{ asset('muvi-flex/assets/images/ic_check.svg') }}" alt="muvi-flex" />
                                 </div>
