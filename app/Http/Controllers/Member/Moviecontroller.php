@@ -33,7 +33,10 @@ class Moviecontroller extends Controller
             if($isValidSubscription) {
                 return view('member.movie-watching');
             }
-            return redirect()->route('member.pricing');  
+            return redirect()->route('member.pricing')
+            ->withErrors([
+                'expired' => 'Maaf, Subscription Anda Sudah Habis. Silahkan Berlangganan Kembali'
+            ]);  
         }
     }
 }

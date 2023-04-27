@@ -47,6 +47,13 @@
                 <!-- Logo & User Avatar -->
 
                 <div class="pt-[85px] flex flex-col items-center gap-5">
+
+                    <p class="text-red-300 text-base font-semibold">
+                        @error('expired')
+                            {{ $message }}
+                        @enderror
+                    </p>
+
                     <p class="text-sky-300 text-base font-semibold">
                         START TODAY
                     </p>
