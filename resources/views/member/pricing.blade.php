@@ -121,7 +121,7 @@
 
                             <form action="" method="POST">
                                 @csrf
-                                <input type="hidden" name="package_id" value="" >
+                                <input type="hidden" name="package_id" value="{{ $standard->id }}">
                                 <button 
                                     type="submit" 
                                     class="mt-10 py-3 block outline outline-1 outline-stream-gray rounded-full text-center">
@@ -186,7 +186,7 @@
 
                             <form action="" method="POST">
                                 @csrf
-                                <input type="hidden" name="package_id" value="" >
+                                <input type="hidden" name="package_id" value="{{ $gold->id }}">
                                 <button 
                                     type="submit"
                                     class="mt-10 py-3 block bg-indigo-600 rounded-full text-center">
