@@ -36,6 +36,12 @@ class TransactionController extends Controller
                 'first_name' => $customer->name,
                 'last_name' => $customer->name,
                 'email' => $customer->email
+            ],
+            'enabled_payments' => [
+                'credit_card',
+                'bca_va',
+                'bni_va',
+                'bri_va',
             ]
         ];
 
