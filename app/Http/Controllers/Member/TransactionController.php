@@ -29,7 +29,7 @@ class TransactionController extends Controller
 
         $params = [
             'transaction_details' => [
-                'order_id' => $transaction->code,
+                'order_id' => $transaction->transaction_code,
                 'gross_amount' => $transaction->amount
             ],
             'customer_details' => [

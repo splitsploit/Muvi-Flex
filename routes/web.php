@@ -11,6 +11,7 @@ use App\Http\Controllers\Member\RegisterController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Member\LoginController as MemberLoginController;
 use App\Http\Controllers\Member\Moviecontroller as MemberMovieController;
+use App\Http\Controllers\Member\TransactionController as MemberTransactionController;
 
 Route::view('/', 'index');
 
@@ -36,6 +37,8 @@ Route::group(['prefix' => 'member', 'middleware' => 'auth'], function() {
 
     Route::get('movie/{id}', [MemberMovieController::class, 'show'])->name('member.movie.detail');
     Route::get('movie/{id}/watch', [MemberMovieController::class, 'watch'])->name('member.movie.watch');
+
+    Route::post('transaction', [MemberTransactionController::class, 'store'])->name('member.transaction.store');
 });
 
 // !! test route
