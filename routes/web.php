@@ -39,6 +39,8 @@ Route::group(['prefix' => 'member', 'middleware' => 'auth'], function() {
     Route::get('movie/{id}/watch', [MemberMovieController::class, 'watch'])->name('member.movie.watch');
 
     Route::post('transaction', [MemberTransactionController::class, 'store'])->name('member.transaction.store');
+
+    Route::view('payment-success', 'member.payment-success')->name('member.payment-success');
 });
 
 // !! test route
