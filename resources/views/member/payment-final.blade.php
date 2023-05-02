@@ -31,7 +31,7 @@
         <div class="flex flex-col items-center m-auto pb-20">
             <img src="{{ asset('muvi-flex/assets/images/success_page_illustration.png') }}" class="w-[610px] max-w-full" alt="muvi-flex" />
             <div class="text-white text-2xl font-semibold text-center mt-[70px]">
-                Payment Success
+                Payment Final
             </div>
             <p class="text-stream-gray text-base text-center leading-[30px] mb-10 mt-3">
                 Time to enjoy yourself to watch great <br class="hidden md:block"> movies from around the world

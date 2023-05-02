@@ -16,16 +16,16 @@ class TransactionController extends Controller
     public function store(Request $request) {
 
         $package = Package::find($request->package_id);
-        
+
         $transaction = Transaction::create([
             'package_id' => $package->id,
-            'user_id' => Auth::user()->id,
+            'user_id' => auth()->user()->id,
             'amount' => $package->price,
             'transaction_code' => strtoupper(Str::random(10)),
             'status' => 'pending'
         ]);
 
-        $customer = Auth::user();
+        $customer = auth()->user();
 
         $params = [
             'transaction_details' => [
@@ -41,7 +41,7 @@ class TransactionController extends Controller
                 'credit_card',
                 'bca_va',
                 'bni_va',
-                'bri_va',
+                'bri_va'
             ]
         ];
 
@@ -51,7 +51,7 @@ class TransactionController extends Controller
         \Midtrans\Config::$is3ds = (bool) env('MIDTRANS_IS_3DS', true);
 
         $createMidtransTransaction = \Midtrans\Snap::createTransaction($params);
-        $midtransRedirectUrl = $createMidtransTransaction->redirect_url;
+        $midtransRedirectUrl =  $createMidtransTransaction->redirect_url;
 
         return redirect($midtransRedirectUrl);
     }

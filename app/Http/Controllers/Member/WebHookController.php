@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\Package;
 use App\Models\UserPremium;
+use Illuminate\Support\Carbon;
 
 class WebHookController extends Controller
 {
@@ -61,6 +62,19 @@ class WebHookController extends Controller
 
           $status = 'pending';
           
+        }
+
+        if($status === 'success') {
+            
+            $transaction = Transaction::where('transaction_code', $orderId)->first();
+            $package = Package::find($transaction->package_id);
+
+            UserPremium::create([
+                'package_id' => $package->id,
+                'user_id' => $transaction->user_id,
+                'end_of_subscription' => Carbon::now()->addDays($package->max_days)
+            ]);
+
         }
 
         return response()->json(null);
