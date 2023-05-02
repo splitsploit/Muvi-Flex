@@ -64,18 +64,44 @@ class WebHookController extends Controller
           
         }
 
-        if($status === 'success') {
-            
-            $transaction = Transaction::where('transaction_code', $orderId)->first();
-            $package = Package::find($transaction->package_id);
+        $transaction = Transaction::where('transaction_code', $orderId)->first();
+        $package = Package::find($transaction->package_id);
 
-            UserPremium::create([
-                'package_id' => $package->id,
-                'user_id' => $transaction->user_id,
-                'end_of_subscription' => Carbon::now()->addDays($package->max_days)
-            ]);
+        if($status === 'success') {
+
+            // user premium data
+            $userPremium = UserPremium::where('user_id', $transaction->user_id)->first();
+
+            // check if user premium data has exists, make renewal subscription
+            if($userPremium) {
+
+                // renewal subscription
+                $endOfSubscription = $userPremium->end_of_subscription;
+                $date = Carbon::createFromFormat('Y-m-d', $endOfSubscription); // change format data from string to date carbon
+                $newEndOfSubscription = $date->addDays($package->max_days)->format('Y-m-d'); // add new end subscription & change format to string again
+
+                // dd($newEndOfSubscription);
+
+                $userPremium->update([
+                    'package_id' => $transaction->package_id,
+                    'end_of_subscription' => $newEndOfSubscription
+                ]);
+
+            } else {
+
+                // if user premium data not exsist, create new subscription
+                UserPremium::create([
+                    'package_id' => $package->id,
+                    'user_id' => $transaction->user_id,
+                    'end_of_subscription' => Carbon::now()->addDays($package->max_days)
+                ]);
+            }
 
         }
+
+        $transaction->update([
+            'status' => $status
+        ]);
 
         return response()->json(null);
 
