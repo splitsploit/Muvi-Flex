@@ -46,6 +46,8 @@ Route::group(['prefix' => 'member', 'middleware' => 'auth'], function() {
 
     Route::post('transaction', [MemberTransactionController::class, 'store'])->name('member.transaction.store');
 
+    Route::view('subscription', 'member.subscription')->name('member.subscription');
+
 });
 
 // !! test route
