@@ -5,6 +5,13 @@
 @section('title-description', 'Our selected movies for your mood')
 
 @section('content')
+
+    {{-- @if (Session()->has('success'))
+        <p class="text-red-300 text-base font-semibold">
+            {{ $message }}
+        </p>
+    @endif --}}
+
     <!-- Movies -->
     <div>
         <div class="font-semibold text-[22px] text-white mb-[18px]">Featured</div>

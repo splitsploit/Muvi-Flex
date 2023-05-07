@@ -21,4 +21,13 @@ class UserPremiumController extends Controller
 
         return view('member.subscription', ['user_premium' => $userPremium]);
     }
+
+    public function destroy($id) {
+
+        UserPremium::destroy($id);
+
+        // session()->flash('deleted', 'Anda Berhasil Berhenti Subscribe');
+
+        return redirect()->route('member.dashboard');
+    }
 }

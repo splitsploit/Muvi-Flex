@@ -82,8 +82,8 @@
         by clicking the button below. Make sure that you have read our
         terms & conditions beforehand.
     </p>
-    <form id="destroy-subscription" 
-    action="#" 
+    <form id="destroy-subscription"
+    action="{{ route('member.user_premium.destroy', $user_premium->id) }}" 
     method="POST">
         @csrf
         @method('delete')
