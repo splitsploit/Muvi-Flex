@@ -14,8 +14,11 @@ class UserPremiumController extends Controller
         // get user id
         $userId = Auth::user()->id;
 
+        // get package name that user subscribe
         $userPremium = UserPremium::with('package')->where('user_id', $userId)->first();
 
-        dd($userPremium);
+        // dd($userPremium);
+
+        return view('member.subscription', ['user_premium' => $userPremium]);
     }
 }
