@@ -10,6 +10,7 @@ use App\Http\Controllers\Member\WebHookController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Member\RegisterController;
 use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Member\UserPremiumController;
 use App\Http\Controllers\Member\LoginController as MemberLoginController;
 use App\Http\Controllers\Member\Moviecontroller as MemberMovieController;
 use App\Http\Controllers\Member\DashboardController as MemberDashboardController;
@@ -46,7 +47,9 @@ Route::group(['prefix' => 'member', 'middleware' => 'auth'], function() {
 
     Route::post('transaction', [MemberTransactionController::class, 'store'])->name('member.transaction.store');
 
-    Route::view('subscription', 'member.subscription')->name('member.subscription');
+    Route::view('view-subscription', 'member.subscription')->name('member.subscription');
+
+    Route::get('subscription', [UserPremiumController::class, 'index'])->name('member.user_premium.index');
 
 });
 
