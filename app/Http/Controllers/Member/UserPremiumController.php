@@ -17,6 +17,12 @@ class UserPremiumController extends Controller
         // get package name that user subscribe
         $userPremium = UserPremium::with('package')->where('user_id', $userId)->first();
 
+        // if user not yet make subscription
+
+        if (! $userPremium) {
+            return redirect()->route('member.pricing');
+        }
+
         // dd($userPremium);
 
         return view('member.subscription', ['user_premium' => $userPremium]);
