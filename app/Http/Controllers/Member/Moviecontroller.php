@@ -35,7 +35,10 @@ class Moviecontroller extends Controller
             // dd($isValidSubscription);
 
             if($isValidSubscription) {
-                return view('member.movie-watching');
+
+                $movie = Movie::find($id);
+
+                return view('member.movie-watching', ['movie' => $movie]);
             }
             return redirect()->route('member.pricing')
             ->withErrors([
