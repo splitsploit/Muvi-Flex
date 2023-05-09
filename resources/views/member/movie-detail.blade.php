@@ -13,7 +13,7 @@
     <div class="flex flex-col gap-10">
         <!-- Thumbnail -->
         <div class="w-full relative overflow-hidden group">
-            <img src="{{ asset('muvi-flex/assets/images/featured-1.png') }}" class="object-cover rounded-[30px]" alt="">
+            <img src="{{ asset('storage/thumbnail/'. $movie->large_thumbnail) }}" class="object-cover rounded-[30px]" alt="">
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
                 <img src="{{ asset('muvi-flex/assets/images/ic_play.svg') }}" width="80" alt="">
             </div>
@@ -24,10 +24,10 @@
         <div class="flex items-center justify-between">
             <div>
                 <div class="text-white font-medium text-[28px] capitalize">
-                    JogjaXploit Journey
+                    {{ $movie->title }}
                 </div>
                 <p class="text-stream-gray text-base mt-[6px]">
-                    History - Released at 19-April-2023
+                    {{ $movie->categories }} - Released at {{ date('Y', strtotime($movie->release_date)) }}
                 </p>
             </div>
             <div class="inline-flex items-center gap-[6px]">
@@ -46,7 +46,7 @@
         <div>
             <div class="text-xl text-white">About</div>
             <p class="max-w-[700px] mt-[10px] text-stream-gray text-base leading-8">
-               JogjaXploit merupakan salah satu komunitas IT di jogja yang kisahnya dapat menginspirasi kepada semua orang
+               {{ $movie->about }}
             </p>
         </div>
     </div>

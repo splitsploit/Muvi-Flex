@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Member;
 
+use App\Models\Movie;
 use App\Models\UserPremium;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -11,7 +12,10 @@ use Illuminate\Support\Facades\Auth;
 class Moviecontroller extends Controller
 {
     public function show($id) {
-        return view('member.movie-detail');
+
+        $movie = Movie::find($id);
+
+        return view('member.movie-detail', ['movie' => $movie]);
     }
 
     public function watch($id) {
