@@ -10,9 +10,9 @@ class MovieController extends Controller
 {
     public function index(Request $request) {
 
-        $search = $request->query('search');
+        $params = $request->query('search');
 
-        $movies = Movie::where('title', 'like', '%' . $search . '%')->orderBy('featured', 'DESC')->orderBy('created_at', 'DESC')->paginate(10);
+        $movies = Movie::where('title', 'like', '%' . $params . '%')->orderBy('featured', 'DESC')->orderBy('created_at', 'DESC')->paginate(10);
         
         return response()->json($movies);
     }
