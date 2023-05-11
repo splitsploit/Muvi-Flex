@@ -33,6 +33,7 @@
                     <th>Id</th>
                     <th>Title</th>
                     <th>Thumbnail</th>
+                    <th>Large Thumbnail</th>
                     <th>Categories</th>
                     <th>Casts</th>
                     <th>Action</th>
@@ -45,6 +46,9 @@
                             <td>{{ $movie->title }}</td>
                             <td>
                                 <img src="{{ asset('storage/thumbnail/'.$movie->small_thumbnail) }}" alt="" width="40%">
+                            </td>
+                            <td>
+                                <img src="{{ asset('storage/thumbnail/'.$movie->large_thumbnail) }}" alt="" width="40%">
                             </td>
                             <td>{{ $movie->categories }}</td>
                             <td>{{ $movie->casts }}</td>
