@@ -53,6 +53,8 @@ Route::group(['prefix' => 'member', 'middleware' => 'auth'], function() {
 
     Route::delete('subscription/{id}', [UserPremiumController::class, 'destroy'])->name('member.user_premium.destroy');
 
+    Route::get('logout', [MemberLoginController::class, 'logout'])->name('member.logout');
+
 });
 
 // !! test route
