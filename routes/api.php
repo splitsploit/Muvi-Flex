@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\MovieController;
@@ -19,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('list-movie', [MovieController::class, 'index']);
+Route::post('auth', [AuthController::class, 'auth']);
 
+Route::get('list-movie', [MovieController::class, 'index']);
 Route::get('movie/{id}', [MovieController::class, 'show']);
