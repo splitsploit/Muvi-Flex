@@ -22,6 +22,7 @@ Muvi Flex adalah aplikasi website streaming film seperti Netflix, HBO, dll yang 
 - API Ready
 - Protected API Using JWT
 - Pagination
+- Search
 - Subscription System
 - Much Others..
 
