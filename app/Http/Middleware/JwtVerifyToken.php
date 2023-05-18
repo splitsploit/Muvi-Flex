@@ -27,7 +27,9 @@ class JwtVerifyToken
         try {
             $token = JWT::decode($jwt, new Key($jwtKey, 'HS256'));
 
-            dd($token);
+            $request->attributes->add([
+                'user' => $token->user
+            ]);
 
             return $next($request);
 
