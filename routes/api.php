@@ -22,5 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('auth', [AuthController::class, 'auth']);
 
-Route::get('list-movie', [MovieController::class, 'index']);
-Route::get('movie/{id}', [MovieController::class, 'show']);
+Route::group(['middleware' => ['jwt.verify']], function() {
+    Route::get('list-movie', [MovieController::class, 'index']);
+    Route::get('movie/{id}', [MovieController::class, 'show']);
+});
