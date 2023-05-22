@@ -25,6 +25,6 @@ class Byyy extends Command
      */
     public function handle()
     {
-        return $this->info('Byyy is Handsome People, Who Have a Beauty Girlfriend As Dentits At Special Region Of Yogyakarta');
+        return $this->info('Byyy is Handsome People, Who Have a Beauty Girlfriend As Dentist At Special Region Of Yogyakarta');
     }
 }
