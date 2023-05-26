@@ -29,8 +29,8 @@ class SendEmail extends Command
     {
         $emailTo = $this->ask('Where Email Must Be Send?');
 
-        Mail::to($emailTo)->send(new MailTest);
+        Mail::to($emailTo)->send(new MailTest($emailTo));
 
-        return $this->info('Email Has Been Sent to'. $emailTo);
+        return $this->info('Email Has Been Sent to' . $emailTo);
     }
 }

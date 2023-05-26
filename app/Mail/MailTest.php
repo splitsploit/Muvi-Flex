@@ -8,17 +8,20 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use PHPUnit\Framework\MockObject\Rule\Parameters;
 
 class MailTest extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $email;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($email)
     {
-        //
+        $this->email = $email;
     }
 
     /**
@@ -43,6 +46,13 @@ class MailTest extends Mailable
         return new Content(
             view: 'mail-test',
         );
+
+
+    }
+
+    public function build()
+    {
+        return $this->view('mail-test')->with(['email' => $this->email]);
     }
 
     /**

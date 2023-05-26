@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Mail Testing</h1>
+    <h1>Halo {{ $email }}</h1>
     <p>This is just an testing email. Love You!</p>
 </body>
 </html>
