@@ -54,6 +54,8 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="{{ asset('muvi-flex/assets/script/script.js') }}"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+    {{-- Pusher --}}
     <script src="https://js.pusher.com/beams/1.0/push-notifications-cdn.js"></script>
     <script>
         $(document).ready(function () {
@@ -69,14 +71,16 @@
             });
         });
 
+        // pusher
         const beamsClient = new PusherPushNotifications.Client({
-            instanceId: 'ec97ced0-e6b7-4fa6-9f8c-5c622c39deb5',
+            instanceId: '2ee8fcf5-d52b-41cd-a85e-46af789618c7',
         });
 
         beamsClient.start()
             .then(() => beamsClient.addDeviceInterest('hello'))
             .then(() => console.log('Successfully registered and subscribed!'))
             .catch(console.error);
+            
     </script>
     @yield('js');
 </body>
