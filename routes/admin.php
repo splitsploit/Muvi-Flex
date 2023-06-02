@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Admin\NotificationController;
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
@@ -27,3 +28,6 @@ use App\Http\Controllers\LoginController;
     Route::group(['prefix' => 'transaction'], function() {
         Route::get('/', [TransactionController::class, 'index'])->name('transaction.index');
     });
+
+    // ** Notification Routes
+    Route::get('notification', [NotificationController::class, 'index'])->name('admin.notification');
